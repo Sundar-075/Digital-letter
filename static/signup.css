@@ -1,0 +1,8 @@
+.container {
+  margin-top: 3em;
+  padding: 5em;
+}
+h1 {
+  color: rgb(0, 0, 0);
+  cursor: none;
+}
