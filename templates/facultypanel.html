@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Admin</title>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="{{url_for('static',filename='bootstrap.min.css')}}"
+    />
+    <link rel="stylesheet" href="{{url_for('static',filename='styles.css')}}" />
+  </head>
+  <body>
+    <section>
+      <nav class="navbar navbar-expand fixed-top gradient">
+        <h6>Welcome {{values['fac_name']}}</h6>
+        <div class="container justify-content-end">
+          <ul class="navbar-nav">
+            <li class="nav-item" role="presentation">
+              <a class="nav-link active" href="/adminpanel">Home</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                onclick='location.href="/logout"'
+                type="button"
+                class="btn"
+              >
+                Logout
+              </button>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </section>
+    <section>
+      <div class="container">
+        {% if let==none or let['isAccepted']==True%}
+        <h3>No Letters to be permitted</h3>
+        {% else %} {% block content %}
+        <p>
+          FROM:{{let['name']}}
+          <br />
+          TO:{{values['fac_name']}}
+          <br />
+          sub:{{let['sub']}}
+          <br />
+          Reason:
+          <br />{{let['body']}}
+        </p>
+        {% endblock %}
+        <button
+          class="btn btn-primary"
+          type="button"
+          onclick="location.href='/accept'"
+        >
+          Accept
+        </button>
+        <button class="btn btn-primary">Rejected</button>
+        {% endif %}
+      </div>
+    </section>
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

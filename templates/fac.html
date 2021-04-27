@@ -1,0 +1,12 @@
+{% extends "facultypanel.html" %} {% block content %}
+<p>
+  FROM:{{let['name']}}
+  <br />
+  TO:{{values['fac_name']}}
+  <br />
+  sub:{{let['sub']}}
+  <br />
+  Reason:
+  <br />{{let['body']}}
+</p>
+{% end block %}
